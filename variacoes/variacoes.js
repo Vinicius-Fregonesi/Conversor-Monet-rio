@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 scales: {
                     x: {
                         grid: {
-                          color: 'red',
+                          color: 'green',
                           borderColor: 'grey',
                           tickColor: 'grey'
                         }
