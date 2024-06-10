@@ -98,11 +98,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (data) {
             const options = {
                 scales: {
-                    y: {
-                        beginAtZero: true // Começar o eixo Y no valor zero
+                    x: {
+                        grid: {
+                          color: 'red',
+                          borderColor: 'grey',
+                          tickColor: 'grey'
+                        }
                     }
-                }
-            };
+            }
+        };
             const ctx = document.getElementById('myChart').getContext('2d');
             const myChart = new Chart(ctx, {
                 type: 'line', // Tipo de gráfico
