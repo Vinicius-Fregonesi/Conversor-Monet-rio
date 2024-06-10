@@ -1,8 +1,9 @@
-[build]
-  publish = "principal"
-  command = ""
-
 [[redirects]]
   from = "/variacoes/*"
-  to = "/"
+  to = "/variacoes/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/conversor.html"
   status = 200
