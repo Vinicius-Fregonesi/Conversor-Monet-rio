@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON to CSV</title>
+</head>
+<body>
+  <button id="downloadButton">Baixar CSV</button>
+
+  <script>
+    function convertToCSV(jsonData) {
+        const array = typeof jsonData != 'object' ? JSON.parse(jsonData) : jsonData;
+        let csv = '';
+
+        // Adicionando os cabeçalhos das colunas
+        const headers = Object.keys(array[0]);
+        csv += headers.join(',') + '\r\n';
+
+        // Adicionando os dados
+        for (let i = 0; i < array.length; i++) {
+            let line = '';
+            for (let index in array[i]) {
+                if (line != '') line += ',';
+                line += array[i][index];
+            }
+            csv += line + '\r\n';
+        }
+        return csv;
+    }
+
+    function downloadCSV(csvData, fileName) {
+      const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', fileName);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+
+    document.getElementById('downloadButton').addEventListener('click', () => {
+      const jsonData = [
+        {"nome": "João", "idade": 30, "cidade": "São Paulo"},
+        {"nome": "Maria", "idade": 25, "cidade": "Rio de Janeiro"},
+        {"nome": "Pedro", "idade": 35, "cidade": "Belo Horizonte"}
+      ];
+
+      const csvData = convertToCSV(jsonData);
+      const fileName = 'dados.csv';
+      downloadCSV(csvData, fileName);
+    });
+  </script>
+</body>
+</html>

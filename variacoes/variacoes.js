@@ -4,6 +4,39 @@ document.addEventListener('DOMContentLoaded', function() {
     let tipoGrafico;
     let moedaBuscar;
     let numeroDias;
+    function convertToCSV(jsonData) {
+        const array = typeof jsonData != 'object' ? JSON.parse(jsonData) : jsonData;
+        let csv = '';
+      
+        // Adicionando os cabeçalhos das colunas
+        const headers = Object.keys(array[0]);
+        csv += headers.join(',') + '\r\n';
+      
+        // Adicionando os dados
+        for (let i = 0; i < array.length; i++) {
+          const row = [];
+          for (const header of headers) {
+            // Se a chave existir, adiciona o valor correspondente, senão, adiciona uma string vazia
+            row.push(array[i][header] || '');
+          }
+          csv += row.join(',') + '\r\n';
+        }
+        return csv;
+      }
+            
+    async function downloadCSV(csvData, fileName) {
+        const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        if (link.download !== undefined) {
+          const url = URL.createObjectURL(blob);
+          link.setAttribute('href', url);
+          link.setAttribute('download', fileName);
+          link.style.visibility = 'hidden';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      }
     listaCategorias.forEach(item => {
         item.addEventListener('click', () => {
             tipoGrafico = item.innerHTML;
@@ -69,6 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     async function criarGrafico() {
         let respostapronta = await resposta(); // Chama a função e espera pela resposta
+        const csvData = await convertToCSV(respostapronta);
+        const fileName = `${document.getElementById('botaoCategoria').innerHTML}.csv`;
+        await downloadCSV(csvData, fileName);
         if (respostapronta) {
             const valoresTratados = respostapronta.map(element => element[tipoGrafico]); // Extrai os valores de 'low' de cada elemento
             const labels = [];
