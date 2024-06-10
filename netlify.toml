@@ -1,9 +1,0 @@
-[[redirects]]
-  from = "/variacoes/*"
-  to = "/variacoes/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "/conversor.html"
-  status = 200
