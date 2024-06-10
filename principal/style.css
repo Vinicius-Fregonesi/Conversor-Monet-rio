@@ -1,0 +1,76 @@
+:root {
+    --azul--fundo-pagina: #0288D1;
+    --azul--fundo-main:#B3E5FC; 
+}
+
+body {
+    background-color: var(--azul--fundo-pagina) !important;
+    overflow-x: hidden; /* Impedir que os elementos filhos ultrapassem a largura da página */
+}
+
+@media screen and (max-width: 767px) {
+    #main {
+        min-width: 90%;
+        background-color: var(--azul--fundo-main);
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2%;
+        margin: 40% auto;
+        height: auto;
+    }
+    
+    .card-title {
+        text-align: center;
+        margin-bottom: 5px;
+        font-size: 1em;
+    }
+    #botaoMoeda{
+        font-size: 16px;
+    }
+    #imgInverter {
+        width: 50px;
+    }
+    
+        
+}
+    @media screen and (min-width: 720px) {
+        #main {
+            width: 300px;
+            background-color: var(--azul--fundo-main);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 5vh auto;
+        }
+        
+        .card-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        #botaoMoeda{
+            font-size: 16px;
+        }
+
+        .dropdown-toggle {
+            width: 100%;
+            color: #ffffff;
+            border: none;
+        }
+        .dropdown{
+            margin: 1% auto;
+        }
+        .itemMoney {
+            cursor: pointer;
+        }
+        
+        .form-control {
+            margin-bottom: 15px;
+        }
+        #imgInverter{
+            width: 100%;
+        }
+            
+    }
+    

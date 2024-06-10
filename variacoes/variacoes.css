@@ -1,0 +1,60 @@
+body {
+    background-color: #0288D1 !important; 
+}
+.card-title {
+    text-align: center;
+    margin-bottom: 2%;
+}
+#main{
+    width: 80%;
+    margin: 20% auto;
+    padding: 2%;
+}
+.dropdown-toggle {
+    width: auto;
+    color: #ffffff;
+    border: none;
+}
+#btnDias{
+    margin-bottom: 5% ;
+}
+#mychart{
+    width: 100%;
+}
+@media screen and (min-width:768px) {
+    #main {
+        width: 50%;
+        background-color: #B3E5FC;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin: 5vh auto;
+    }
+    
+    .card-title {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    
+    .dropdown-toggle {
+        width: 100%;
+        color: #ffffff;
+        border: none;
+    }
+    
+    .itemCategoria {
+        cursor: pointer;
+    }
+    .itemMoney {
+        cursor: pointer;
+    }
+    
+    .listasSuspensas{
+        display: flex;
+        flex-direction: row;
+    }
+    .form-control {
+        margin-bottom: 15px;
+    }
+}
